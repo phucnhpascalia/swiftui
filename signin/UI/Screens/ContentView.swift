@@ -21,7 +21,7 @@ struct ContentView: View {
                     if isLoggin {
                         HomeView().inject(container)
                     } else {
-                        WelcomeView().inject(container)
+                        TestView().inject(container)
                     }
                 }
             }

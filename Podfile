@@ -9,5 +9,5 @@ target 'signin' do
   pod “Alamofire”
   pod 'GoogleSignIn'
   pod 'GoogleSignInSwiftSupport'
-
+  pod 'youtube-ios-player-helper'
 end

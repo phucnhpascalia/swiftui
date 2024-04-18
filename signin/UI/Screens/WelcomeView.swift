@@ -14,7 +14,7 @@ struct WelcomeView: View {
                     PrimaryButton(title: "Get Started")
 
                     NavigationLink {
-                        LogInView().inject(container)
+                        TestView().inject(container)
                     } label: {
                         Text("Login")
                             .font(.title3)
