@@ -39,7 +39,6 @@ public class SelectableInstagramNode: CustomSelectableDecoratorNode {
         return nil
     }
 
-
     public required init(url: String, html: String, size: CGSize, key: NodeKey? = nil) {
         super.init(key)
 

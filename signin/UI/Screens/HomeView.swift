@@ -270,8 +270,6 @@ struct HomeView: View {
         } catch {
             print("Error: \(error.localizedDescription)")
         }
-        
-        store.dispatchCommand(type: .insertTwitter, payload: TwitterPayload(urlString: link, htmlString: GetHTMLEmbeddedService.shared.html, size: CGSize(width: 550, height: 900), originalSelection: originalSelection))
 
         GetHTMLEmbeddedService.shared.loadTweetAndMeasureHeight(url: link) { height in
             store.dispatchCommand(type: .insertTwitter, payload: TwitterPayload(urlString: link, htmlString: GetHTMLEmbeddedService.shared.html, size: CGSize(width: UIScreen.screenSize.width, height: CGFloat(height!)), originalSelection: originalSelection))
