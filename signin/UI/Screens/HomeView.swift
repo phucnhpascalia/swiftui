@@ -48,6 +48,11 @@ struct HomeView: View {
         }
     }
 
+    init() {
+        WidgetsJSManager.shared.load(link: "https://platform.twitter.com/widgets.js", type: "tw")
+        WidgetsJSManager.shared.load(link: "https://platform.instagram.com/en_US/embeds.js", type: "ig")
+    }
+
     private var productsBinding: Binding<[ProductModel]> {
         $products.dispatched(to: container.appState, \.products)
     }
@@ -265,8 +270,9 @@ struct HomeView: View {
         } catch {
             print("Error: \(error.localizedDescription)")
         }
+        
+        store.dispatchCommand(type: .insertTwitter, payload: TwitterPayload(urlString: link, htmlString: GetHTMLEmbeddedService.shared.html, size: CGSize(width: 550, height: 900), originalSelection: originalSelection))
 
-        WidgetsJSManager.shared.load(link: "https://platform.twitter.com/widgets.js", type: "tw")
         GetHTMLEmbeddedService.shared.loadTweetAndMeasureHeight(url: link) { height in
             store.dispatchCommand(type: .insertTwitter, payload: TwitterPayload(urlString: link, htmlString: GetHTMLEmbeddedService.shared.html, size: CGSize(width: UIScreen.screenSize.width, height: CGFloat(height!)), originalSelection: originalSelection))
             isLoading = false
@@ -286,9 +292,7 @@ struct HomeView: View {
             print("Error: \(error.localizedDescription)")
         }
 
-        WidgetsJSManager.shared.load(link: "https://platform.instagram.com/en_US/embeds.js", type: "ig")
-
-        store.dispatchCommand(type: .insertInstagram, payload: InstagramPayload(urlString: link, htmlString: "", size: CGSize(width: UIScreen.screenSize.width, height: 500), originalSelection: originalSelection))
+        store.dispatchCommand(type: .insertInstagram, payload: InstagramPayload(urlString: link, htmlString: "", size: CGSize(width: UIScreen.screenSize.width, height: 620), originalSelection: originalSelection))
         url = ""
     }
     

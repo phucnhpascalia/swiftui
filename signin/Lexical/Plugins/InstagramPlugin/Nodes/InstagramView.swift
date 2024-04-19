@@ -28,21 +28,21 @@ public class InstagramView: UIView {
         return webView
     }()
 
-    @IBInspectable public var id: String
+    @IBInspectable public var html: String
 
     public private(set) var state: State = .idle
 
     public private(set) var height: CGFloat
 
-    public init(id: String) {
-        self.id = id
+    public init(html: String) {
+        self.html = html
         height = DefaultCellHeight
 
         super.init(frame: CGRect.zero)
     }
 
     public required init?(coder: NSCoder) {
-        id = ""
+        html = ""
         height = DefaultCellHeight
 
         super.init(coder: coder)
@@ -56,9 +56,9 @@ public class InstagramView: UIView {
         state = .loading
         addWebViewToSubviews()
 
-        let modifiedHtmlTemplate = HtmlTemplateIGView.replacingOccurrences(of: "%s", with: id)
+//        let modifiedHtmlTemplate = HtmlTemplateIGView.replacingOccurrences(of: "%s", with: id)
 
-        webView.loadHTMLString(modifiedHtmlTemplate, baseURL: nil)
+        webView.loadHTMLString(html, baseURL: nil)
     }
 
     fileprivate func addWebViewToSubviews() {

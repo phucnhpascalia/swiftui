@@ -72,20 +72,20 @@ public class SelectableTwitterNode: CustomSelectableDecoratorNode {
     }
 
     private func createTwitterView() -> UIView {
-        let webView = EmbeddedView(id: id ?? "", type: "tweet", maxWidth: Int(size.width))
-        webView.isUserInteractionEnabled = false
-        webView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        webView.load()
+//        let webView = EmbeddedView(id: id ?? "", type: "tweet", maxWidth: Int(size.width))
+//        webView.isUserInteractionEnabled = false
+//        webView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+//        webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+//        webView.load()
 
-//        let webView = WKWebView()
-//            if let html = html {
-//                webView.isUserInteractionEnabled = false
-//                webView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
-//                webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-//                
-//                webView.loadHTMLString("<html><head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'><style>* { margin: 0; padding: 0; } </style></head><body><div id='wrapper' display: 'inline-block'>\(html)</div></body></html>", baseURL: nil)
-//            }
+        let webView = WKWebView()
+            if let html = html {
+                webView.isUserInteractionEnabled = false
+                webView.frame = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+                webView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+                let urlTwitter = getDataURL()
+                webView.loadHTMLString("<html><head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></head><body><div id='wrapper' display: 'inline-block'><blockquote class='twitter-tweet' data-lang='en'><a href='\(urlTwitter)'></a></blockquote></div><script async src='https://platform.twitter.com/widgets.js'></script></body></html>", baseURL: nil)
+            }
             return webView
     }
 

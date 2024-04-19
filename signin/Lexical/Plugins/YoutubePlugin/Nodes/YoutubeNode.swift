@@ -78,7 +78,7 @@ public class SelectableYoutubeNode: CustomSelectableDecoratorNode {
     }
 
     private func createYoutubeView() -> UIView {
-        let htmtYoutube = "<html><head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'><style>* { margin: 0; padding: 0; } </style></head><body><div id='wrapper' display: 'inline-block'><iframe width='100%' height='\(DEFAULT_YOUTUBE_WIDTH)' src='https://www.youtube.com/embed/\(id!)' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowFullScreen={true} title='YouTube video' style={{ pointerEvents: 'none' }} /></div></body></html>"
+        let htmtYoutube = "<html><head><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'><style>* { margin: 0; padding: 0; } </style></head><body><div id='wrapper' display: 'inline-block'><iframe width='100%' height='\(DEFAULT_YOUTUBE_HEIGHT - 100)' src='https://www.youtube.com/embed/\(id!)' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture' allowFullScreen={true} title='YouTube video' style={{ pointerEvents: 'none' }} /></div></body></html>"
 
         let webView = WKWebView()
         webView.isUserInteractionEnabled = false
